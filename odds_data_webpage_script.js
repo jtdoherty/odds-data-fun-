@@ -182,7 +182,7 @@ function toggleFilters() {
 // Updated function to fetch data from the specific JSON file
 async function fetchAdvantagesData() {
     try {
-        const response = await fetch('research/output7.json');
+        const response = await fetch('output7.json');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
