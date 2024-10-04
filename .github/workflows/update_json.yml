@@ -1,14 +1,8 @@
-import os
-from github import Github
-
-# Use the GitHub token from the secrets
-g = Github(os.getenv("TOKEN"))
-
 name: Update JSON File
 
 on:
   schedule:
-    - cron: '/5 * * * *'  # This runs the action every hour
+    - cron: '0 * * * *'  # This runs the action every hour
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
@@ -23,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # Use your desired Python version
+          python-version: '3.8'
 
       - name: Install dependencies
         run: |
@@ -33,7 +27,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
-        run: python research/odds_data_webpage_api_code.py
+        run: python odds_data_webpage_api_code.py
 
       - name: Commit and push if changed
         run: |
