@@ -33,7 +33,7 @@ jobs:
           RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
         run: python odds_data_webpage_api_code.py
 
-      - name: Commit and push if changed
+      - name: Commit and push changes
         run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
