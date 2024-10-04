@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JTD Research - Find Your Market's Edge</title>
+    <style>
+        :root {
+            --color-primary: #6200ea;
+            --color-primary-dark: #3700b3;
+            --color-accent: #00e676;
+            --color-background: #ffffff;
+            --color-text: #000000;
+            --color-text-light: #ffffff;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header {
+            background-color: var(--color-primary);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--color-text-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-accent);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: var(--color-text);
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: #00c853;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text-light);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+            color: var(--color-text-light);
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .about {
+            background-color: var(--color-background);
+            padding: 5rem 0;
+        }
+
+        .about h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--color-primary);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .features {
+            padding: 5rem 0;
+            background-color: #f5f5f5;
+        }
+
+        .features h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-primary);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            background-color: var(--color-background);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            border: 2px solid var(--color-primary);
+        }
+
+        .feature-item:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .explore-btn {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .learn {
+            background-color: var(--color-primary);
+            padding: 5rem 0;
+            color: var(--color-text-light);
+        }
+
+        .learn h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .learn-content {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .learn-content h3 {
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .learn-content h4 {
+            color: var(--color-accent);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .learn-content p {
+            margin-bottom: 1rem;
+        }
+
+        .learn-content ul {
+            list-style-type: disc;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .learn-content ol {
+            list-style-type: decimal;
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .formula {
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        footer {
+            background-color: var(--color-text);
+            color: var(--color-text-light);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--color-primary);
+                padding: 1rem;
+            }
+
+            nav.active ul {
+                flex-direction: column;
+            }
+
+            nav.active ul li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">JTD Research</a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#learn">Learn</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Find Your Market's Edge</h1>
+                <p>Discover +EV opportunities and make smarter bets</p>
+                <a href="C:\Git\research\odds_data_webpage.html" class="btn">Get Started</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About JTD Research</h2>
+                <p>At JTD Research, we provide completely free tools to help you discover your edge in every betting market. By analyzing data and uncovering +EV (positive expected value) opportunities, we enable you to make smarter bets and improve your chances of long-term success. Whether you're exploring new markets or mastering familiar ones, our platform gives you the insights you need to outsmart the odds and stay ahead—at no cost to you.</p>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Our Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">📈</div>
+                        <h3>Market Analysis</h3>
+                        <p>In-depth analysis of various betting markets</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <h3>+EV Opportunities</h3>
+                        <p>Identify positive expected value bets</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📊</div>
+                        <h3>Data Visualization</h3>
+                        <p>Clear and intuitive data representations</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💰</div>
+                        <h3>Free Access</h3>
+                        <p>All tools and insights at no cost</p>
+                    </div>
+                </div>
+                <div class="explore-btn">
+                    <a href="C:\Git\research\odds_data_webpage.html" class="btn">Explore +EV Opportunities</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="learn" class="learn">
+            <div class="container">
+                <h2>Learn</h2>
+                <div class="learn-content">
+                    <h3>How Our Positive EV Bets Tool Works</h3>
+                    <p>Our Positive EV (Expected Value) tool scans online sportsbooks for mispriced odds to identify bets that can return a profit over time. By constantly monitoring odds every minute, we ensure you find currently available +EV bets today.</p>
+
+                    <h4>How It Works:</h4>
+                    <p>To find a +EV bet, consider this example: If most sportsbooks offer the New York Yankees to win at -130 odds, but one offers them at -105, we assume -130 is the correct price. This makes the -105 odds a better value.</p>
+                    <p>However, simply spotting better odds doesn't make a bet +EV. It must also overcome the "vig" or "juice" that sportsbooks charge. For example, if -130 is the correct price for the Yankees, and the no-vig fair odds come out to -119, getting -105 is a positive expected value, meaning you're getting a great deal.</p>
+
+                    <h4>Using the Tool:</h4>
+                    <ul>
+                        <li><strong>Event:</strong> Displays the game details (league, date, time).</li>
+                        <li><strong>+EV Bet:</strong> Shows the bet offering +EV and the sportsbook offering it.</li>
+                        <li><strong>Consensus No Vig Odds:</strong> Reflects the odds with the vig removed.</li>
+                        <li><strong>+EV Bet Odds:</strong> Directly links you to the sportsbook with the +EV bet.</li>
+                        <li><strong>ROI:</strong> Displays the long-term expected return based on the bet odds and consensus no-vig odds.</li>
+                    </ul>
+                    <p>You can filter by league (NFL, NBA, etc.) and state to find +EV bets available in your area.</p>
+
+                    <h4>What is Expected Value (EV)?</h4>
+                    <p>Expected value (EV) measures how much a bet is expected to return, typically shown as a percentage. While most bets have negative EV due to the vig, +EV bets are those with a higher expected return than the sportsbook implies. Over time, consistently betting +EV can lead to a profit.</p>
+
+                    <h4>Understanding No-Vig Odds:</h4>
+                    <p>No-vig odds are the true odds with no sportsbook cut. For example, instead of -110 on both sides of a market, no-vig odds would be +100 on each side, reflecting the true 50/50 probability. By comparing current odds with no-vig odds, you can spot +EV opportunities.</p>
+
+                    <p>In short, our tool does the hard work of finding these bets by comparing odds across sportsbooks, saving you the effort of manually checking multiple sites.</p>
+
+                    <h4>Calculating Return on Investment (ROI) for Sports Betting</h4>
+                    <p>To calculate the Return on Investment (ROI) for sports betting using the consensus no-vig odds and your +EV bet, you can follow these steps:</p>
+
+                    <h5>Formula for ROI</h5>
+                    <div class="formula">
+                        ROI = (Total Profit / Total Stake) × 100
+                    </div>
+
+                    <h5>Steps to Calculate ROI</h5>
+                    <ol>
+                        <li><strong>Determine Your Bet Amount:</strong> Let's say you are betting $100.</li>
+                        <li><strong>Find the Consensus No-Vig Odds:</strong> For example, if the consensus no-vig odds are +250, this means that for every $100 wagered, you would win $250.</li>
+                        <li><strong>Calculate Potential Profit from Your Bet:</strong>
+                            <div class="formula">
+                                Potential Profit = (Consensus No-Vig Odds / 100) * Bet Amount
+                            </div>
+                            <p>Example: If your no-vig odds are +250, potential profit = (250 / 100) * 100 = $250.</p>
+                        </li>
+                        <li><strong>Calculate the Expected Value (EV):</strong>
+                            <div class="formula">
+                                EV = (Probability of Winning * Potential Profit) - (Probability of Losing * Bet Amount)
+                            </div>
+                            <p>You'll need to estimate the probability of winning. For instance, if you believe you have a 40% chance of winning, your EV would be:</p>
+                            <p>EV = (0.40 * 250) - (0.60 * 100) = $100 - $60 = $40.</p>
+                        </li>
+                        <li><strong>Calculate Total Profit:</strong>
+                            <p>Total Profit = EV (if the bet wins) or -Bet Amount (if the bet loses).</p>
+                            <ul>
+                                <li>If you win: Total Profit = $250 - $100 = $150.</li>
+                                <li>If you lose: Total Profit = -$100.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Calculate ROI:</strong>
+                            <p>Use the ROI formula from Step 2.</p>
+                            <ul>
+                                <li>If the bet wins: ROI = ($150 / $100) * 100 = 150%.</li>
+                                <li>If the bet loses: ROI = (-$100 / $100) * 100 = -100%.</li>
+                            </ul>
+                        </li>
+                    </ol>
+
+                    <h5>Example</h5>
+                    <p>Let's summarize with an example:</p>
+                    <ul>
+                        <li>Bet Amount: $100</li>
+                        <li>Consensus No-Vig Odds: +250</li>
+                        <li>Probability of Winning: 40%</li>
+                        <li>Potential Profit = $250</li>
+                        <li>EV = (0.40 * 250) - (0.60 * 100) = $40</li>
+                        <li>If you win: ROI = ($150 / $100) * 100 = 150%.</li>
+                        <li>If you lose: ROI = (-$100 / $100) * 100 = -100%.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <p>&copy; 2024 JTD Research. All rights reserved.</p>
+            <p>Contact us: jtdoherty1105@gmail.com</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mainNav = document.getElementById('main-nav');
+
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
