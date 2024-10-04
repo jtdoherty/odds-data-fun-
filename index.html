@@ -5,8 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EV Bets Table</title>
     <link rel="stylesheet" href="odds_data_webpage_style.css">
+    <style>
+        /* Add these styles for the header and navigation */
+        :root {
+            --color-primary: #6200ea;
+            --color-primary-dark: #3700b3;
+            --color-accent: #00e676;
+            --color-background: #ffffff;
+            --color-text: #000000;
+            --color-text-light: #ffffff;
+        }
+
+        header {
+            background-color: var(--color-primary);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--color-text-light);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: var(--color-text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-text-light);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--color-primary);
+                padding: 1rem;
+            }
+
+            nav.active ul {
+                flex-direction: column;
+            }
+
+            nav.active ul li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="header-content">
+            <a href="research_home_page.html" class="logo">JTD Research</a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="research_home_page.html#about">About</a></li>
+                    <li><a href="research_home_page.html#features">Features</a></li>
+                    <li><a href="research_home_page.html#learn">Learn</a></li>
+                    <li><a href="research_home_page.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
     <div class="container">
         <h1>EV Bets Table</h1>
         <button id="toggleFilters">Show Filters</button>
@@ -59,5 +173,15 @@
     </div>
 
     <script src="odds_data_webpage_script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mainNav = document.getElementById('main-nav');
+
+            mobileMenuBtn.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html>
