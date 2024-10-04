@@ -2,13 +2,14 @@ import os
 from github import Github
 
 # Use the GitHub token from the secrets
-g = Github(os.getenv("RASCAL"))
+g = Github(os.getenv("TOKEN"))
 
 name: Update JSON File
 
 on:
   schedule:
-    - cron: '/5 * * * *'  # This runs the action every hour
+    - cron: '0 * * * *'  # This runs the action every hour
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   update_json:
@@ -16,6 +17,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -27,4 +30,14 @@ jobs:
           pip install requests pandas PyGithub
 
       - name: Run script
-        run: python odds_data_webpage_api_code.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
+        run: python research/odds_data_webpage_api_code.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add research/output7.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update JSON data" && git push)
