@@ -1,1 +1,30 @@
+import os
+from github import Github
 
+# Use the GitHub token from the secrets
+g = Github(os.getenv("RASCAL"))
+
+name: Update JSON File
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # This runs the action every hour
+
+jobs:
+  update_json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Use your desired Python version
+
+      - name: Install dependencies
+        run: |
+          pip install requests pandas PyGithub
+
+      - name: Run script
+        run: python odds_data_webpage_api_code.py
