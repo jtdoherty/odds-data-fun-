@@ -2,7 +2,7 @@ name: Update JSON File
 
 on:
   schedule:
-    - cron: '/1 * * * *'  # This changes how often it runs
+    - cron: '*/5 * * * *'  # This runs the action every 5 minutes
   workflow_dispatch:  # Allows manual triggering
 
 jobs:
@@ -27,7 +27,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
-        run: python odds_data_webpage_api_code.py
+        run: python research/odds_data_webpage_api_code.py
 
       - name: Commit and push if changed
         run: |
