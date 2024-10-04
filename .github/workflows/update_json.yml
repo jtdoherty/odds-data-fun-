@@ -8,7 +8,7 @@ name: Update JSON File
 
 on:
   schedule:
-    - cron: '0 * * * *'  # This runs the action every hour
+    - cron: '/5 * * * *'  # This runs the action every hour
 
 jobs:
   update_json:
