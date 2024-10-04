@@ -1,8 +1,12 @@
 name: Update JSON File
+
 on:
   schedule:
     - cron: '*/5 * * * *'  # This runs the action every 5 minutes
   workflow_dispatch:  # Allows manual triggering
+
+permissions:
+  contents: write  # Give write permissions for pushing changes
 
 jobs:
   update_json:
@@ -11,7 +15,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use GITHUB_TOKEN for authentication
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -29,7 +33,7 @@ jobs:
 
       - name: Run script
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Use GITHUB_TOKEN
           RAPIDAPI_KEY: ${{ secrets.RAPIDAPI_KEY }}
         run: python odds_data_webpage_api_code.py
 
